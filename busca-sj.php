@@ -12,9 +12,9 @@ $html = $resposta->getBody()->getContents();
 $crawler = new Crawler();
 $crawler->addHtmlContent($html);
 
-$subtitle = $crawler->filterXPath("//blockquote/font[1]");
+$subtitle = $crawler->filterXPath('//html/body/blockquote/font[1]');
 
 foreach ($subtitle as $subtitulo)
 {
-    var_dump($subtitulo->textContent);
+    var_dump($subtitle->text());
 }
