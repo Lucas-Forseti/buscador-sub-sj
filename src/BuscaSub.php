@@ -22,7 +22,6 @@ class BuscaSub
 
         $html = $resposta->getBody()->getContents();
 
-        $crawler = new Crawler();
         $this->crawler->addHtmlContent($html);
 
         $elementoSubtitle = $this->crawler->filterXPath('//html/body/blockquote/font[1]');
