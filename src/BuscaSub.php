@@ -20,7 +20,7 @@ class BuscaSub
     {
         $resposta = $this->httpClient->request("GET", $url);
 
-        $html = $resposta->getBody()->getContents();
+        $html = $resposta->getBody();
 
         $this->crawler->addHtmlContent($html);
 
