@@ -4,13 +4,11 @@ require 'vendor/autoload.php';
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 
-$client = new Client();
-$resposta = $client->request("GET", "https://www.spacejam.com/archive/spacejam/movie/cmp/jamcentral/photos.html");
-
-$html = $resposta->getBody()->getContents();
-
+$client = new Client(['base_uri' => 'https://www.spacejam.com/']);
 $crawler = new Crawler();
-$crawler->addHtmlContent($html);
+
+$buscador = new \Forseti\BuscaSJ\BuscaSub($client, $crawler);
+$subtitle = $buscador->buscar('archive/spacejam/movie/cmp/jamcentral/photos.html');
 
 $subtitle = $crawler->filterXPath('//html/body/blockquote/font[1]');
 

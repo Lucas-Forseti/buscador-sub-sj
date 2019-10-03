@@ -16,4 +16,15 @@ class BuscaSub
         $this->httpClient = $httpClient;
         $this->crawler = $crawler;
     }
+    public function buscar(string $url): array
+    {
+        $resposta = $this->httpClient->request("GET", $url);
+
+        $html = $resposta->getBody()->getContents();
+
+        $crawler = new Crawler();
+        $this->crawler->addHtmlContent($html);
+
+        $subtitle = $crawler->filterXPath('//html/body/blockquote/font[1]');
+    }
 }
