@@ -1,5 +1,6 @@
 <?php
 require 'vendor/autoload.php';
+require 'src/BuscaSub.php';
 
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
@@ -10,9 +11,7 @@ $crawler = new Crawler();
 $buscador = new \Forseti\BuscaSJ\BuscaSub($client, $crawler);
 $subtitle = $buscador->buscar('archive/spacejam/movie/cmp/jamcentral/photos.html');
 
-$subtitle = $crawler->filterXPath('//html/body/blockquote/font[1]');
-
 foreach ($subtitle as $subtitulo)
 {
-    var_dump($subtitle->text());
+    var_dump($subtitle);
 }

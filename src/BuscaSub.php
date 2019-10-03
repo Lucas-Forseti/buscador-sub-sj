@@ -25,6 +25,14 @@ class BuscaSub
         $crawler = new Crawler();
         $this->crawler->addHtmlContent($html);
 
-        $subtitle = $crawler->filterXPath('//html/body/blockquote/font[1]');
+        $elementoSubtitle = $this->crawler->filterXPath('//html/body/blockquote/font[1]');
+        $subtitle = [];
+
+        foreach ($elementoSubtitle as $elemento)
+        {
+            $subtitle[] = $elemento->textContent;
+        }
+
+        return $subtitle;
     }
 }
