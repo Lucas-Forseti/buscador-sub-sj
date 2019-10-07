@@ -10,8 +10,7 @@ $client = new Client(['base_uri' => 'https://www.spacejam.com/']);
 $crawler = new Crawler();
 
 $buscador = new BuscaSub($client, $crawler);
-$subtitle = $buscador->buscar('archive/spacejam/movie/cmp/jamcentral/photos.html');
-
+$subtitle = $buscador->buscar('/archive/spacejam/movie/cmp/jamcentral/photos.html');
 foreach ($subtitle as $subtitulo)
 {
     var_dump($subtitle);
